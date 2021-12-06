@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
@@ -108,34 +106,19 @@ export default function SearchResults(props) {
     selectedGender,
   ]);
 
-  /*  useEffect(() => {
-    updateResults(selectedCompany, "Company");
-  }, [selectedCompany]);
-
-  useEffect(() => {
-    updateResults(selectedEyecolor, "Eye Color");
-  }, [selectedEyecolor]);
-
-  useEffect(() => {
-    updateResults(selectedFavFruits, "Favourite Fruits");
-  }, [selectedFavFruits]);
-
-  useEffect(() => {
-    updateResults(selectedGender, "Gender");
-  }, [selectedGender]);
-
-  const updateResults = (selectedList, ele) => {
-    let filteredResults = results;
-    if (ele === "Company") {
-      selectedList.map((unit) => {
-        filteredResults = results.filter((item) => item.company === unit);
-      });
-    } else if (ele === "Eye Color") {
-    } else if (ele === "Favourite Fruits") {
-    } else if (ele === "Gender") {
-    }
+  const handleClear = () => {
+    let checkSearchInput = props.searchInput.toUpperCase();
+    let filteredResults;
+    filteredResults = props.data.filter((item) => {
+      let updateName = item.name.toUpperCase();
+      return updateName.indexOf(checkSearchInput) !== -1;
+    });
+    setSelectedCompany([]);
+    setSelectedEyecolor([]);
+    setSelectedFavFruits([]);
+    setSelectedGender([]);
     setResults(filteredResults);
-  }; */
+  };
 
   const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -183,12 +166,19 @@ export default function SearchResults(props) {
     },
   };
 
+  let combinedFilters = [
+    ...selectedCompany,
+    ...selectedEyecolor,
+    ...selectedFavFruits,
+    ...selectedGender,
+  ];
+
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} className="select-holder">
           <Item>
-            <Stack direction="row">
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
               {cList && cList.length > 0 && (
                 <FormControl>
                   <Select
@@ -281,6 +271,14 @@ export default function SearchResults(props) {
                     ))}
                   </Select>
                 </FormControl>
+              )}
+
+              {combinedFilters && combinedFilters.length > 0 && (
+                <Chip
+                  label="Clear Filters"
+                  onClick={handleClear}
+                  onDelete={handleClear}
+                />
               )}
             </Stack>
           </Item>
