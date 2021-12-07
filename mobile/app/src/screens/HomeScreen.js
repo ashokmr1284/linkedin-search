@@ -16,7 +16,7 @@ const theme = {
 };
 
 const HomeScreen = (props) => {
-  const [searchInput, setSearchInput] = React.useState("M");
+  const [searchInput, setSearchInput] = React.useState("");
   return (
     <PaperProvider theme={theme}>
     <View style={styles.screenContainer}>
