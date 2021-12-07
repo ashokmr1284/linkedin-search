@@ -68,7 +68,7 @@ export default function IndividualCard(props) {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={handleMoreClose}>Add to Favorites</MenuItem>
+              <MenuItem onClick={handleMoreClose}>Add to Favourites</MenuItem>
               <MenuItem onClick={handleMoreClose}>Share</MenuItem>
               <MenuItem onClick={handleMoreClose}>Connect</MenuItem>
               <MenuItem onClick={handleMoreClose}>Message</MenuItem>
@@ -78,27 +78,6 @@ export default function IndividualCard(props) {
         title={props.item.name}
         subheader={`Works at ${props.item.company} & Location: ${props.item.address}`}
       />
-      {/*       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {`Location: ${props.item.address}`}
-        </Typography>
-      </CardContent> 
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions> */}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>About:</Typography>
