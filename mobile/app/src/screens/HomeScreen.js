@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Image, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import data from "../../../../common/data.json"
+import data from "../common/data.json"
 import SearchAppBar from './SearchAppBar';
 import SearchResults from './SearchResults';
 

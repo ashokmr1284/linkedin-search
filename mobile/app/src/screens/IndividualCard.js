@@ -13,17 +13,22 @@ const IndividualCard = (props) => {
     const closeMenu = () => setVisible(false);
 
     const imsgsrc = props.item.picture;
+    const firstTowChars = props.item.name.substring(0,2).toUpperCase();
     return (
         <View style={styles.cardContainerStyles} >
+            
+
             <Card style={styles.cardStyles}>
                 <Card.Title 
                     title={props.item.name} 
                     subtitle={`Works at ${props.item.company} & Location: ${props.item.address}`}                
-                    left={(props) =><Avatar.Image size={50}  style={styles.imageStyles} source={imsgsrc} /> }
+                        visible={visible}
+                    left={(props) => 
+                        <Avatar.Text size={50} label={firstTowChars} color="white" style={styles.imageStyles}  />  }
                     right={(props) => <Menu
                         visible={visible}
                         onDismiss={closeMenu}
-                        anchor={<Icon name="ellipsis-v" style={styles.menuStyles} size={20} onPress={openMenu}  />}>
+                        anchor={<Button icon="segment" onPress={openMenu}></Button>}>
                         <Menu.Item onPress={() => {}} title="Add to Favourites" />
                         <Menu.Item onPress={() => {}} title="Share" />
                         <Menu.Item onPress={() => {}} title="Connect" />
@@ -36,8 +41,6 @@ const IndividualCard = (props) => {
         </View>
     )
 }
-/*  */
-{/* <Button onPress={openMenu}>Show menu</Button> */}
 
 const styles = StyleSheet.create({
     imageStyles: {
@@ -50,7 +53,6 @@ const styles = StyleSheet.create({
         paddingBottom: 10
     },
     cardStyles: {
-        boxShadow: "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)"
     },
     menuStyles: {        
         marginRight: 15

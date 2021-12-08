@@ -4,8 +4,6 @@ import { Avatar } from 'react-native-paper';
 import { TextInput } from 'react-native-paper';
 import { Searchbar } from 'react-native-paper';
 import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
-import logo from "../../../../common/assets/logo.svg";
-import "./styles.css";
 
 const SearchAppBar = (props) => {
   const handleSearch = () => {
@@ -17,8 +15,13 @@ const SearchAppBar = (props) => {
   return (
     <Appbar.Header style={styles.headerStyles}>
       {/* <Appbar.BackAction onPress={_goBack} /> */}
-      {/* <Avatar.Icon size={32} icon={require('../../../../common/assets/logo.svg')} /> */}
-      <Image style={styles.logoStyles} source={require('../../../../common/assets/logo.svg')}/>
+
+      {/* <Avatar.Image style={styles.logoStyles} size={40} source={require('../common/assets/logo.svg')} /> */}
+      <Avatar.Text  style={styles.logoStyles} size={40} label="in" color="white" />
+     
+      {/* <Image style={styles.logoStyles} source={{
+          uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==',
+        }}/> */}
       <Searchbar
         placeholder="Search"
         onChangeText={text => props.setSearchInput(text)}
@@ -37,14 +40,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',   
   },
   searchBarStyles: {
-    borderBottom: "0 none",
-    boxShadow: "none",
     backgroundColor: "#E2F0FE",
-    borderRadius: "5px",
-    "&:hover": {
-        backgroundColor: "#edf6ff",
-    },
+    borderRadius: 5,
     height: 42,
+    minWidth: 200
   },
   logoStyles : {
     width: 40,
@@ -54,13 +53,9 @@ const styles = StyleSheet.create({
   },
   searchStyles: {
     marginLeft: 10,
-    height: '30px',   
+    height: 30,   
     backgroundColor: "#E2F0FE",
-    borderBottom: "0 none",
-    borderRadius: "5px",
-    "&:hover": {
-        backgroundColor: "#edf6ff",
-    },
+    borderRadius: 5,
   }
 });
 

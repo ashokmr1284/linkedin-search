@@ -34,6 +34,62 @@ export default function SearchResults(props) {
       return updateName.indexOf(checkSearchInput) !== -1;
     });
 
+    //Excersise
+
+    console.log("Excercise props.data", props.data);
+    // let foundItem = props.data.filter((item) => {
+    //   return item.name === "Armstrong Castaneda";
+    // });
+
+    // let foundItem = props.data.find((item) => {
+    //   return item.name === "Armstrong Castaneda";
+    // });
+
+    // let foundItem = props.data.every((item) => {
+    //   return item.name === "Armstrong Castaneda";
+    // });
+
+    // const fruits = ["Banana", "Orange", "Apple", "Orange", "Pear", "Banana"];
+
+    // const occurances = fruits.reduce((acc, item) => {
+    //   return { ...acc, [item]: (acc[item] || 0) + 1 };
+    // }, {});
+
+    // console.log("Excercise foundItem", occurances);
+
+    // const students = [
+    //   { name: "Kingsley", score: 70 },
+    //   { name: "Jack", score: 80 },
+    //   { name: "Joe", score: 63 },
+    //   { name: "Beth", score: 75 },
+    //   { name: "Kareem", score: 59 },
+    //   { name: "Sarah", score: 93 },
+    // ];
+
+    // let getScores = students.reduce((acc, student) => {
+    //   if (acc === null || student.score < acc) {
+    //     return student.score;
+    //   }
+    //   console.log("Excercise acc", acc);
+    //   return acc;
+    // }, null);
+
+    // console.log("Excercise foundItem", getScores);
+
+    const arrOfArrs = [
+      ["ashok"],
+      [("aaron", "ake", "anna", "aje")],
+      ["becky", "ben", "bright"],
+      ["cara", "chris"],
+      ["david", "daniel", "danielle", "djenue"],
+    ];
+
+    const flattened = arrOfArrs.reduce((acc, array) => acc.concat(array));
+
+    console.log("Excercise foundItem", flattened);
+
+    //End Excercise
+
     if (selectedCompany && selectedCompany.length > 0) {
       filteredResults = filteredResults.filter((item) =>
         selectedCompany.includes(item.company)

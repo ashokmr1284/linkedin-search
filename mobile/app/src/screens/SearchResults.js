@@ -183,9 +183,9 @@ export default function SearchResults(props) {
                         visible={companyMenu}
                         onDismiss={closeCompanyMenu}
                         anchor={<Button onPress={openCompanyMenu}>Company</Button>}>
-                        {cList.map((name) => (
+                        {cList.map((name, index) => (
                             //checkbox-blank-circle-outline
-                            <Menu.Item icon={selectedCompany.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Company")}} title={name} />
+                            <Menu.Item  key={index} icon={selectedCompany.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Company")}} title={name} />
                         ))}
                     </Menu>
                      <Divider />
@@ -198,9 +198,9 @@ export default function SearchResults(props) {
                         visible={eyeColorMenu}
                         onDismiss={closeEyeColorMenu}
                         anchor={<Button onPress={openEyeColorMenu}>Eye Color</Button>}>
-                        {ecList.map((name) => (
+                        {ecList.map((name, index) => (
                             //checkbox-blank-circle-outline
-                            <Menu.Item icon={selectedEyecolor.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Eye Color")}} title={name} />
+                            <Menu.Item key={index} icon={selectedEyecolor.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Eye Color")}} title={name} />
                         ))}
                     </Menu>
                      <Divider />
@@ -213,9 +213,9 @@ export default function SearchResults(props) {
                         visible={favFruitsMenu}
                         onDismiss={closeFavFruitsMenu}
                         anchor={<Button onPress={openFavFruitsMenu}>Favourite Fruits</Button>}>
-                        {ffList.map((name) => (
+                        {ffList.map((name, index) => (
                             //checkbox-blank-circle-outline
-                            <Menu.Item icon={selectedFavFruits.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Favourite Fruits")}} title={name} />
+                            <Menu.Item key={index} icon={selectedFavFruits.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Favourite Fruits")}} title={name} />
                         ))}
                     </Menu>
                      <Divider />
@@ -227,9 +227,9 @@ export default function SearchResults(props) {
                         visible={genderMenu}
                         onDismiss={closeGenderMenu}
                         anchor={<Button onPress={openGenderMenu}>Gender</Button>}>
-                        {gList.map((name) => (
+                        {gList.map((name, index) => (
                             //checkbox-blank-circle-outline
-                            <Menu.Item icon={selectedGender.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Gender")}} title={name} />
+                            <Menu.Item key={index} icon={selectedGender.includes(name) ? "check-circle" : "checkbox-blank-circle-outline"} onPress={(e) => {handleChange({name}, "Gender")}} title={name} />
                         ))}
                     </Menu>
                 )}
@@ -244,12 +244,13 @@ export default function SearchResults(props) {
             <View style={styles.lineContainer}>
                 <Text style={styles.searchResultsSnippet}>Search Results for <Text style={styles.searchResultsBoldSnippet}>{props.searchInput}</Text></Text>
             </View>
+            
 
             <View style={styles.cardsContainer}>
                 {results &&
                     results.length > 0 &&
-                    results.map((item) => (
-                        <IndividualCard item={item} />
+                    results.map((item, index) => (
+                        <IndividualCard key={index} item={item} />
                 ))}
             </View>
         </View>
@@ -263,27 +264,22 @@ const styles = StyleSheet.create({
     filtersContainer: {
         backgroundColor: "#fff",
         color: "rgba(0, 0, 0, 0.87)",
-        boxShadow: "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
-        borderTop: "1px solid #dfdfdf",
-        marginTop: "1px",
-        padding: '10px'
+        marginTop: 1,
+        padding: 10
     },
     cardsContainer: {
-        paddingLeft: '15px',
-        paddingRight: '15px',
-        paddingBottom: '15px'
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingBottom: 15
     },
     lineContainer: {
-        padding: '15px'
+        padding: 15
     },
     searchResultsSnippet: {
         textAlign: 'center'
     },
     searchResultsBoldSnippet: {
         fontWeight: 'bold'
-    },
-    inlineElement: {
-        display: 'inline'
     },
     eleContainer: {
         flex: 1
