@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Checkbox from "@mui/material/Checkbox";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import FilledInput from "@mui/material/FilledInput";
 import FormControl from "@mui/material/FormControl";
 
 // import custom hooks
@@ -16,6 +16,7 @@ import useResults from "../common/hooks/useResults";
 
 // import other components
 import IndividualCard from "./IndividualCard";
+import IndividualCardiOS from "./IndividualCardiOS";
 
 export default function SearchResults(props) {
   const [
@@ -46,6 +47,16 @@ export default function SearchResults(props) {
     textAlign: "center",
     color: theme.palette.text.secondary,
     borderTop: "1px solid #dfdfdf",
+  }));
+
+  const CustomFilledInput = styled(FilledInput)(({ theme }) => ({
+    color: theme.palette.primary.contrastText,
+    background: theme.palette.primary.main,
+    borderRadius: 30,
+    "&:hover": {
+      background: theme.hoverColor.background,
+      color: theme.hoverColor.color,
+    },
   }));
 
   const handleChange = (event, ele) => {
@@ -106,7 +117,12 @@ export default function SearchResults(props) {
                     displayEmpty
                     value={selectedCompany}
                     onChange={(e) => handleChange(e, "Company")}
-                    input={<OutlinedInput className="outline-input" />}
+                    input={
+                      <CustomFilledInput
+                        disableUnderline={true}
+                        className="outline-input"
+                      />
+                    }
                     renderValue={(selected) => <>Company</>}
                     MenuProps={MenuProps}
                     inputProps={{ "aria-label": "Without label" }}
@@ -130,8 +146,13 @@ export default function SearchResults(props) {
                     displayEmpty
                     value={selectedEyecolor}
                     onChange={(e) => handleChange(e, "Eye Color")}
-                    input={<OutlinedInput className="outline-input" />}
-                    renderValue={(selected) => <>Eye Color</>}
+                    input={
+                      <CustomFilledInput
+                        disableUnderline={true}
+                        className="outline-input"
+                      />
+                    }
+                    renderValue={(selected) => <>Education</>}
                     MenuProps={MenuProps}
                     inputProps={{ "aria-label": "Without label" }}
                   >
@@ -146,7 +167,6 @@ export default function SearchResults(props) {
                   </Select>
                 </FormControl>
               )}
-
               {ffList && ffList.length > 0 && (
                 <FormControl>
                   <Select
@@ -154,8 +174,13 @@ export default function SearchResults(props) {
                     displayEmpty
                     value={selectedFavFruits}
                     onChange={(e) => handleChange(e, "Favourite Fruits")}
-                    input={<OutlinedInput className="outline-input" />}
-                    renderValue={(selected) => <>Favourite Fruits</>}
+                    input={
+                      <CustomFilledInput
+                        disableUnderline={true}
+                        className="outline-input"
+                      />
+                    }
+                    renderValue={(selected) => <>Hobbies</>}
                     MenuProps={MenuProps}
                     inputProps={{ "aria-label": "Without label" }}
                   >
@@ -178,8 +203,13 @@ export default function SearchResults(props) {
                     displayEmpty
                     value={selectedGender}
                     onChange={(e) => handleChange(e, "Gender")}
-                    input={<OutlinedInput className="outline-input" />}
-                    renderValue={(selected) => <>Gender</>}
+                    input={
+                      <CustomFilledInput
+                        disableUnderline={true}
+                        className="outline-input"
+                      />
+                    }
+                    renderValue={(selected) => <>Native Place</>}
                     MenuProps={MenuProps}
                     inputProps={{ "aria-label": "Without label" }}
                   >
@@ -211,7 +241,11 @@ export default function SearchResults(props) {
         results.length > 0 &&
         results.map((item) => (
           <Grid item xs={12}>
-            <IndividualCard item={item} />
+            {props.device === "iOS" ? (
+              <IndividualCardiOS item={item} />
+            ) : (
+              <IndividualCard item={item} />
+            )}
           </Grid>
         ))}
     </>
